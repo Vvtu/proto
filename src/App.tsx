@@ -3,9 +3,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
 
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 
 import './App.css';
 
@@ -30,23 +30,24 @@ function App() {
 
                 <nav>
                     <ul>
+
                         <li>
-                            <Link to="/">Home</Link>
+                            <Link to="/login">Login</Link>
                         </li>
                         <li>
-                            <Link to="/about">About</Link>
+                            <Link to="/registration">Registration</Link>
                         </li>
                         <li>
-                            <Link to="/users">Users</Link>
+                            <Link to="/customer-info">CustomerInfo</Link>
                         </li>
                     </ul>
                 </nav>
 
-                <Button variant="contained" color="primary">
+                {/* <Button variant="contained" color="primary">
                     <Link to="/about">
                         Hello World
                     </Link>
-                </Button>
+                </Button> */}
             </header>
         </div>
     );
