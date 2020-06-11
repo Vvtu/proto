@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const steps = ['Регистрация', 'Адреса', 'Контакты', 'Сотрудники', 'Владельцы', 'Платежные реквизиты',];
+const steps = ['Регистрация', 'Адреса', 'Контакты', 'Сотрудники', 'Владельцы', 'Платежные реквизиты', 'Полный список'];
 
 function getStepContent(step: any) {
     switch (step) {
@@ -65,6 +65,7 @@ function getStepContent(step: any) {
             return <PaymentForm />;
         case 2:
         case 5:
+        case 6:
             return <Review />;
         default:
             throw new Error('Unknown step');
@@ -141,7 +142,7 @@ export default function CustomerFrom() {
 
                                         {activeStep !== 0 && (
                                             <Button onClick={handleBack} className={classes.button}>
-                                                Back
+                                                Назад
                                             </Button>
                                         )}
                                         <Button
@@ -150,7 +151,7 @@ export default function CustomerFrom() {
                                             onClick={handleNext}
                                             className={classes.button}
                                         >
-                                            {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                                            {activeStep === steps.length - 1 ? 'Подтвердить' : 'Сохранить и перейти к следующей'}
                                         </Button>
                                     </div>
                                 </React.Fragment>
