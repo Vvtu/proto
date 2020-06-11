@@ -10,7 +10,7 @@ export default function CompanyRegisterInfo() {
                 Регистрационная информация
       </Typography>
             <Grid container spacing={3}>
-                <Grid item xs={12} >
+                <Grid item sm={12} >
                     <TextField
                         required
                         id="legalForm"
@@ -20,7 +20,7 @@ export default function CompanyRegisterInfo() {
                         autoComplete="given-name"
                     />
                 </Grid>
-                <Grid item xs={12} >
+                <Grid item sm={12} >
                     <TextField
                         required
                         id="lastName"
@@ -30,7 +30,7 @@ export default function CompanyRegisterInfo() {
                         autoComplete="family-name"
                     />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item sm={12}>
                     <TextField
                         required
                         id="address1"
@@ -40,7 +40,7 @@ export default function CompanyRegisterInfo() {
                         autoComplete="shipping address-line1"
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item sm={12} md={6}>
                     <TextField
                         required
                         id="address2"
@@ -50,7 +50,7 @@ export default function CompanyRegisterInfo() {
                         autoComplete="shipping address-line2"
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item sm={12} md={6}>
                     <TextField
                         required
                         id="city"
@@ -61,7 +61,7 @@ export default function CompanyRegisterInfo() {
                     />
                 </Grid>
 
-                <Grid item xs={12} sm={6}>
+                <Grid item sm={12} md={6}>
                     <TextField
                         required
                         id="zip"
@@ -71,7 +71,7 @@ export default function CompanyRegisterInfo() {
                         autoComplete="shipping postal-code"
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item sm={12} md={6}>
                     <TextField
                         required
                         id="country"
@@ -81,7 +81,7 @@ export default function CompanyRegisterInfo() {
                         autoComplete="shipping country"
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item sm={12} md={6}>
                     <TextField
                         required
                         id="country"
@@ -91,7 +91,7 @@ export default function CompanyRegisterInfo() {
                         autoComplete="shipping country"
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item sm={12} md={6}>
                     <TextField
                         required
                         id="country"

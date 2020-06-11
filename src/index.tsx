@@ -6,7 +6,9 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <div className="layoutWidth">
+      <Routes />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
