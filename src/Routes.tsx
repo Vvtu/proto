@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import App from './App';
 import Login from './login';
 import Registration from './registration';
-import CustomerInfo from './customerInfo';
+import CustomerForm from './customerForm';
 
 
 export default function Routes() {
@@ -16,8 +16,8 @@ export default function Routes() {
                 <Route path="/registration">
                     <Registration />
                 </Route>
-                <Route path="/customer-info">
-                    <CustomerInfo />
+                <Route path="/customer-form">
+                    <CustomerForm />
                 </Route>
                 <Route path="/">
                     <App />
