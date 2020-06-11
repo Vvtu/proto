@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CustomerFrom() {
+export default function CustomerForm() {
   const classes = useStyles();
 
   return (

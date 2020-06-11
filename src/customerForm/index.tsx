@@ -1,4 +1,6 @@
 import React from 'react';
+import { generatePath } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
@@ -6,6 +8,7 @@ import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+
 import CompanyRegisterInfo from './CompanyRegisterInfo';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
@@ -71,10 +74,31 @@ function getStepContent(step: number) {
             throw new Error(`Unknown step = ${step}`);
     }
 }
+export const CUSTOMER_FORM = '/customer-form/:step?';
 
-export default function CustomerFrom() {
+type PROPS_TYPE = {
+    history: any;
+    match: {
+        params: { step?: string; };
+    }
+};
+export default function CustomerForm(props: PROPS_TYPE) {
     const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
+    const { history, match: { params } } = props;
+    const activeStep = parseInt(params.step || '0', 10);
+
+    const setActiveStep = (step: number) => {
+        console.log('setActiveStep step = ', step)
+
+        const path = generatePath(CUSTOMER_FORM, {
+            ...params,
+            step
+        });
+        console.log('setActiveStep path = ', path)
+
+        history.push(path);
+    }
+    console.log('activeStep  = ', activeStep)
 
     const [completed, setCompleted] = React.useState(new Set<number>());
 
