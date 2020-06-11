@@ -3,7 +3,6 @@ import TopBar from "./components/TopBar"
 import Paper from '@material-ui/core/Paper';
 
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 import { Link as RouterLink } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
         position: "relative",
     },
     link: { textDecoration: "none" },
+    linkFocus: { color: 'red' },
     toolbarButtons: {
         marginLeft: "auto",
     },
@@ -48,42 +48,34 @@ export default function App() {
             <TopBar />
             <Container className={classes.center}>
                 <Paper className={classes.paper}>
+                    <RouterLink to={"/customer-form"} className={classes.link}>
+                        <Typography variant="h6" color="inherit" noWrap>
+                            Форма ОРП
+              </Typography>
+                    </RouterLink>
+                    <RouterLink to={"/"} className={classes.link}>
+                        <Typography variant="h6" color="inherit" noWrap>
+                            Форма ОИВ
+              </Typography>
+                    </RouterLink>
+                    <RouterLink to={"/"} className={classes.link}>
+                        <Typography variant="h6" color="inherit" noWrap>
+                            Проект
+              </Typography>
+                    </RouterLink>
+                    <RouterLink to={"/"} className={classes.link}>
+                        <Typography variant="h6" color="inherit" noWrap>
+                            Бизнес-план
+              </Typography>
+                    </RouterLink>
 
-                    <Link >
-                        <RouterLink to={"/customer-form"} className={classes.link}>
-                            <Typography variant="h6" color="inherit" noWrap>
-                                Форма ОРП
+
+                    <RouterLink to={"/"} className={classes.link}>
+                        <Typography variant="h6" color="inherit" noWrap>
+                            Документ
               </Typography>
-                        </RouterLink>
-                    </Link>
-                    <Link >
-                        <RouterLink to={"/"} className={classes.link}>
-                            <Typography variant="h6" color="inherit" noWrap>
-                                Форма ОИВ
-              </Typography>
-                        </RouterLink>
-                    </Link>
-                    <Link >
-                        <RouterLink to={"/"} className={classes.link}>
-                            <Typography variant="h6" color="inherit" noWrap>
-                                Проект
-              </Typography>
-                        </RouterLink>
-                    </Link>
-                    <Link >
-                        <RouterLink to={"/"} className={classes.link}>
-                            <Typography variant="h6" color="inherit" noWrap>
-                                Бизнес-план
-              </Typography>
-                        </RouterLink>
-                    </Link>
-                    <Link >
-                        <RouterLink to={"/"} className={classes.link}>
-                            <Typography variant="h6" color="inherit" noWrap>
-                                Документ
-              </Typography>
-                        </RouterLink>
-                    </Link>
+                    </RouterLink>
+
                 </Paper>
             </Container>
         </React.Fragment>

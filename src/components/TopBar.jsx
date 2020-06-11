@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Tooltip from "@material-ui/core/Tooltip";
-import Link from "@material-ui/core/Link";
 import { Link as RouterLink } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -28,13 +27,11 @@ export default function CustomerFrom() {
       <CssBaseline />
       <AppBar position="absolute" color="default" className={classes.appBar}>
         <Toolbar>
-          <Link>
-            <RouterLink to={"/"} className={classes.link}>
-              <Typography variant="h6" color="inherit" noWrap>
-                ГИС прототип
-              </Typography>
-            </RouterLink>
-          </Link>
+          <RouterLink to={"/"} className={classes.link}>
+            <Typography variant="h6" color="inherit" noWrap>
+              ГИС прототип
+            </Typography>
+          </RouterLink>
           <div className={classes.toolbarButtons}>
             <Tooltip title="Авторизация">
               <RouterLink to={"/login"} className={classes.link}>

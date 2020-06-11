@@ -74,7 +74,7 @@ export default function CompanyRegisterInfo() {
                 <Grid item sm={12} md={6}>
                     <TextField
                         required
-                        id="country"
+                        id="country2"
                         name="country"
                         label="ОКПО"
                         fullWidth
@@ -84,7 +84,7 @@ export default function CompanyRegisterInfo() {
                 <Grid item sm={12} md={6}>
                     <TextField
                         required
-                        id="country"
+                        id="country3"
                         name="country"
                         label="ОКВЭД основной"
                         fullWidth
@@ -94,7 +94,7 @@ export default function CompanyRegisterInfo() {
                 <Grid item sm={12} md={6}>
                     <TextField
                         required
-                        id="country"
+                        id="country4"
                         name="country"
                         label="Размер уставного капитала"
                         fullWidth
