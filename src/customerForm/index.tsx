@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Регистрация', 'Адреса', 'Контакты', 'Сотрудники', 'Владельцы', 'Платежные реквизиты', 'Полный список'];
 
-function getStepContent(step: any) {
+function getStepContent(step: number) {
     switch (step) {
         case 0:
             return <CompanyRegisterInfo />;
@@ -68,7 +68,7 @@ function getStepContent(step: any) {
         case 6:
             return <Review />;
         default:
-            throw new Error('Unknown step');
+            throw new Error(`Unknown step = ${step}`);
     }
 }
 
