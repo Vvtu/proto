@@ -88,14 +88,10 @@ export default function CustomerForm(props: PROPS_TYPE) {
     const activeStep = parseInt(params.step || '0', 10);
 
     const setActiveStep = (step: number) => {
-        console.log('setActiveStep step = ', step)
-
         const path = generatePath(CUSTOMER_FORM, {
             ...params,
             step
         });
-        console.log('setActiveStep path = ', path)
-
         history.push(path);
     }
     console.log('activeStep  = ', activeStep)
