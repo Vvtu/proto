@@ -98,7 +98,6 @@ export default function CustomerFrom() {
     };
 
     const handleStep = (step: number) => () => {
-        console.log('handleStep step = ', step)
         setActiveStep(step);
     };
 
@@ -151,7 +150,7 @@ export default function CustomerFrom() {
                                             onClick={handleNext}
                                             className={classes.button}
                                         >
-                                            {activeStep === steps.length - 1 ? 'Подтвердить' : 'Сохранить и перейти к следующей'}
+                                            {activeStep === steps.length - 1 ? 'Подтвердить' : 'Сохранить'}
                                         </Button>
                                     </div>
                                 </React.Fragment>

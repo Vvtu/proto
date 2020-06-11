@@ -5,23 +5,14 @@ import Login from './login';
 import Registration from './registration';
 import CustomerForm from './customerForm';
 
-
 export default function Routes() {
     return (
         <Router>
             <Switch>
-                <Route path="/login">
-                    <Login />
-                </Route>
-                <Route path="/registration">
-                    <Registration />
-                </Route>
-                <Route path="/customer-form">
-                    <CustomerForm />
-                </Route>
-                <Route path="/">
-                    <App />
-                </Route>
+                <Route path="/login" component={Login} />
+                <Route path="/registration" component={Registration} />
+                <Route path="/customer-form" component={CustomerForm} />
+                <Route path="/" component={App} />
             </Switch>
         </Router>
     );
