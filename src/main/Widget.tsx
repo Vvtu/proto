@@ -14,19 +14,20 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '100%',
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        alignItems: 'start',
-    },
-
-    paper: {
-        height: 200,
-        width: 200,
-        display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 10
+    },
+
+    paper: {
+        height: 300,
+        width: 300,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'start',
+        alignItems: 'center',
+        marginRight: 40,
+        marginBottom: 40,
     },
 }));
 
