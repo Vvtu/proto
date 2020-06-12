@@ -9,7 +9,7 @@ export default function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                (Имя компании)
+                /Имя компании/
       </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
