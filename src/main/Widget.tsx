@@ -10,13 +10,16 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
 
     link: {
-        textDecoration: "none",
         width: '100%',
         height: '100%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        textDecoration: "none",
+        "&:hover": {
+            textDecoration: "underline",
+        },
     },
 
     paper: {

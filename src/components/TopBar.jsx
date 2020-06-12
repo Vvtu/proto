@@ -13,7 +13,12 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
   },
-  link: { textDecoration: "none" },
+  link: {
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
   toolbarButtons: {
     marginLeft: "auto",
   },
