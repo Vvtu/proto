@@ -61,12 +61,11 @@ function getStepContent(step: number) {
     switch (step) {
         case 0:
             return <CompanyRegisterInfo />;
-        case 3:
-            return <AddressForm />;
         case 1:
+            return <AddressForm />;
+        case 2:
         case 4:
             return <PaymentForm />;
-        case 2:
         case 5:
         case 6:
             return <Review />;
@@ -164,6 +163,9 @@ export default function CustomerForm(props: PROPS_TYPE) {
                                                 Назад
                                             </Button>
                                         )}
+                                          <Button onClick={()=>{} } className={classes.button} disabled>
+                                                Отменить изменния
+                                            </Button>
                                         <Button
                                             variant="contained"
                                             color="primary"
