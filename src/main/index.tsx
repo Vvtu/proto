@@ -27,11 +27,11 @@ export default function Main() {
         <React.Fragment>
             <TopBar />
             <Container className={classes.container}>
-                <Widget link={"/customer-form"} label={`ОРП`} />
-                <Widget link={"/"} label={`ОИВ`} />
-                <Widget link={"/"} label={`Проект`} />
-                <Widget link={"/"} label={`Бизнес-план`} />
-                <Widget link={"/"} label={`Документ`} />
+                <Widget link={"/customer-form"} label={`ОРП`} tip={"ОРП это такая большая форма с многими полями"} />
+                <Widget link={"/"} label={`ОИВ`} tip={"Извините, этот модуль еще не разработан."} />
+                <Widget link={"/"} label={`Проект`} tip={"Извините, этот модуль еще не разработан."} />
+                <Widget link={"/"} label={`Бизнес-план`} tip={"Извините, этот модуль еще не разработан."} />
+                <Widget link={"/"} label={`Документ`} tip={"Извините, этот модуль еще не разработан."} />
             </Container>
             <Copyright />
         </React.Fragment>

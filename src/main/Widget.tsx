@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { Link as RouterLink } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
-
+import { Tooltip } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -34,14 +34,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Widget(prop: any) {
+export default function Widget(props: any) {
     const classes = useStyles();
+    const { label, link, tip } = props;
     return (
         <Paper className={classes.paper}>
-            <RouterLink to={prop.link} className={classes.link}>
-                <Typography variant="h6" color="inherit" noWrap>
-                    {prop.label}
-                </Typography>
+            <RouterLink to={link} className={classes.link}>
+                <Tooltip title={tip} >
+
+                    <Typography variant="h6" color="inherit" noWrap>
+                        {label}
+                    </Typography>
+                </Tooltip>
+
             </RouterLink>
         </Paper>
     );

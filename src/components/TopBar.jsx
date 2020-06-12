@@ -33,9 +33,11 @@ export default function CustomerForm() {
       <AppBar position="absolute" color="default" className={classes.appBar}>
         <Toolbar>
           <RouterLink to={"/"} className={classes.link}>
-            <Typography variant="h6" color="inherit" noWrap>
-              ГИС прототип
-            </Typography>
+            <Tooltip title={"Переход на главную страницу"}>
+              <Typography variant="h6" color="inherit" noWrap>
+                ГИС прототип
+              </Typography>
+            </Tooltip>
           </RouterLink>
           <div className={classes.toolbarButtons}>
             <Tooltip title="Авторизация">
