@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
   toolbarButtons: {
     marginLeft: "auto",
   },
+  whiteColor: {
+    color: "white",
+    fontWeight: "bold",
+  },
 }));
 
 export default function CustomerForm() {
@@ -30,11 +34,11 @@ export default function CustomerForm() {
   return (
     <>
       <CssBaseline />
-      <AppBar position="absolute" color="default" className={classes.appBar}>
+      <AppBar position="absolute" className={classes.appBar}>
         <Toolbar>
           <RouterLink to={"/"} className={classes.link}>
             <Tooltip title={"Переход на главную страницу"}>
-              <Typography variant="h6" color="inherit" noWrap>
+              <Typography variant="h6" noWrap className={classes.whiteColor}>
                 ГИС прототип
               </Typography>
             </Tooltip>
@@ -46,7 +50,7 @@ export default function CustomerForm() {
                   aria-label="account of current user"
                   aria-controls="primary-search-account-menu"
                   aria-haspopup="true"
-                  color="inherit"
+                  className={classes.whiteColor}
                 >
                   <AccountCircle />
                 </IconButton>
