@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Login() {
+export default function Login(props: any) {
     const classes = useStyles();
 
     return (
@@ -49,7 +49,7 @@ export default function Login() {
                 <Typography component="h1" variant="h5">
                     Авторизация
         </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form} noValidate onSubmit={() => props.history.push('/')}>
                     <TextField
                         variant="outlined"
                         margin="normal"
