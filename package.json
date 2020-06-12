@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false PORT=3000 react-scripts build",
     "test": "react-scripts test",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
