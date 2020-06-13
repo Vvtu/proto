@@ -47,9 +47,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Widget(props: any) {
     const classes = useStyles();
-    const { label, link, tip, subNames = [] } = props;
+    const { label, link, tip, subNames = [], setErrorFired } = props;
     return (
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} onClick={() => {
+            if (!link) {
+                setErrorFired('Извините, этот модуль еще не имплементирован.')
+            }
+        }}>
             <div className={classes.center}>
                 <div>
                     <RouterLink to={link} className={classes.link}>
