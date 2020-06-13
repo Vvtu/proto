@@ -67,10 +67,8 @@ function getStepContent(step: number) {
             return <AddressForm />;
         case 2:
             return <Contacts />;
-
         case 3:
             return <Employees name={"Сотрудники"} />;
-
         case 4:
             return <Employees name={"Владельцы"} />;
         case 5:
