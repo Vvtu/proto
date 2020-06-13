@@ -2,8 +2,9 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import ButtonsBlock from '../components/ButtonsBlock'
 
-export default function PaymentDetails() {
+export default function PaymentDetails(props: any) {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
@@ -66,6 +67,7 @@ export default function PaymentDetails() {
                 </Grid>
 
             </Grid>
+            <ButtonsBlock {...props} />
         </React.Fragment>
     );
 }

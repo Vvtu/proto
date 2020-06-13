@@ -6,7 +6,6 @@ import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import CompanyRegisterInfo from './CompanyRegisterInfo';
@@ -32,42 +31,16 @@ const useStyles = makeStyles((theme) => ({
     stepper: {
         padding: theme.spacing(3, 0, 5),
     },
-    buttons: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-    },
-    button: {
-        marginTop: theme.spacing(3),
-        marginLeft: theme.spacing(1),
-    },
-    footnote: {
-        marginTop: "-25px"
-    }
 }));
 
 
 export const customerFormSteps = ['Регистрация', 'Адреса', 'Контакты', 'Сотрудники', 'Владельцы', 'Платежные реквизиты', 'Полный список'];
 
-function getStepContent(step: number) {
-    switch (step) {
-        case 0:
-            return <CompanyRegisterInfo />;
-        case 1:
-            return <AddressForm />;
-        case 2:
-            return <Contacts />;
-        case 3:
-            return <Employees name={"Сотрудники"} />;
-        case 4:
-            return <Employees name={"Владельцы"} />;
-        case 5:
-            return <PaymentDetails />;
-        case 6:
-            return <Review />;
-        default:
-            throw new Error(`Unknown step = ${step}`);
-    }
-}
+const Emps = () => <Employees name={"Сотрудники"} />;
+const Holders = () => <Employees name={"Владельцы"} />;
+
+const FormsArray = [CompanyRegisterInfo, AddressForm, Contacts, Emps, Holders, PaymentDetails, Review];
+
 export const CUSTOMER_FORM = '/customer-form/:step?';
 
 type PROPS_TYPE = {
@@ -92,14 +65,6 @@ export default function CustomerForm(props: PROPS_TYPE) {
 
     const [completed, setCompleted] = React.useState(new Set<number>());
 
-    function Footnote() {
-        return (
-            <Typography variant="body2" color="textSecondary" className={classes.footnote}>
-                {'* - обязательные поля'}
-            </Typography>
-        );
-    }
-
     const handleNext = () => {
         const newCompleted = new Set([...completed]);
         newCompleted.add(activeStep);
@@ -115,6 +80,10 @@ export default function CustomerForm(props: PROPS_TYPE) {
         setActiveStep(step);
     };
 
+    const Content = FormsArray[activeStep];
+    if (!Content) {
+        throw new Error(`Component not implemented for step =${activeStep}`)
+    }
     return (
         <React.Fragment>
             <TopBar />
@@ -136,31 +105,13 @@ export default function CustomerForm(props: PROPS_TYPE) {
                             </Step>
                         ))}
                     </Stepper>
-                    <React.Fragment>
 
-                        {getStepContent(activeStep)}
-
-                        <div className={classes.buttons}>
-
-                            {activeStep !== 0 && (
-                                <Button onClick={handleBack} className={classes.button}>
-                                    Назад
-                                </Button>
-                            )}
-                            <Button onClick={() => { }} className={classes.button} disabled>
-                                Отменить изменния
-                                            </Button>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={handleNext}
-                                className={classes.button}
-                            >
-                                {activeStep === customerFormSteps.length - 1 ? 'Подтвердить' : 'Сохранить'}
-                            </Button>
-                        </div>
-                    </React.Fragment>
-                    <Footnote />
+                    <Content
+                        activeStep={activeStep}
+                        handleBack={handleBack}
+                        handleNext={handleNext}
+                        isLast={activeStep === customerFormSteps.length - 1}
+                    />
 
                 </Paper>
                 <Copyright />

@@ -7,9 +7,9 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import ButtonsBlock from '../components/ButtonsBlock'
 
 const fullList = [
     {
@@ -118,25 +118,28 @@ fullList.forEach(({ name, list }) => {
     });
 });
 
-export default function Review() {
+export default function Review(props: any) {
     const classes = useStyles();
 
     return (
-        <TableContainer component={Paper}>
-            <Table className={classes.table} size="small" aria-label="a dense table">
-                <TableBody>
-                    {rows.map(({ title, format }) => (
-                        <TableRow key={title}>
-                            <TableCell component="th" scope="row" className={format === 'header' ? classes.header : classes.text}>
-                                {title}
-                            </TableCell>
-                            {format === 'header'
-                                ? <TableCell align="right" className={classes.header}></TableCell>
-                                : <TableCell align="right" className={classes.text}>{'--------'}</TableCell>}
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <React.Fragment>
+            <TableContainer component={Paper}>
+                <Table className={classes.table} size="small" aria-label="a dense table">
+                    <TableBody>
+                        {rows.map(({ title, format }) => (
+                            <TableRow key={title}>
+                                <TableCell component="th" scope="row" className={format === 'header' ? classes.header : classes.text}>
+                                    {title}
+                                </TableCell>
+                                {format === 'header'
+                                    ? <TableCell align="right" className={classes.header}></TableCell>
+                                    : <TableCell align="right" className={classes.text}>{'--------'}</TableCell>}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            <ButtonsBlock {...props} />
+        </React.Fragment>
     );
 }

@@ -2,8 +2,9 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import ButtonsBlock from '../components/ButtonsBlock'
 
-export default function CompanyRegisterInfo() {
+export default function Contacts(props: any) {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
@@ -38,8 +39,8 @@ export default function CompanyRegisterInfo() {
                         fullWidth
                     />
                 </Grid>
-
             </Grid>
+            <ButtonsBlock {...props} />
         </React.Fragment>
     );
 }
