@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 import CompanyRegisterInfo from './CompanyRegisterInfo';
 import AddressForm from './AddressForm';
+import Contacts from './Contacts';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 import Copyright from '../components/Copyright';
@@ -64,6 +65,8 @@ function getStepContent(step: number) {
         case 1:
             return <AddressForm />;
         case 2:
+            return <Contacts />;
+
         case 3:
         case 4:
             return <PaymentForm />;

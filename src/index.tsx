@@ -5,11 +5,11 @@ import Routes from './Routes';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.Fragment>
+  <React.StrictMode>
     <div className="layoutWidth">
       <Routes />
     </div>
-  </React.Fragment>,
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
