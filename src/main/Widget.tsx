@@ -51,12 +51,12 @@ export default function Widget(props: any) {
     return (
         <Paper className={classes.paper} onClick={() => {
             if (!link) {
-                setErrorFired('Извините, этот модуль еще не имплементирован.')
+                setErrorFired(`Извините, модуль "${label}" еще не имплементирован.`)
             }
         }}>
             <div className={classes.center}>
                 <div>
-                    <RouterLink to={link} className={classes.link}>
+                    <RouterLink to={link || '/'} className={classes.link}>
                         <Tooltip title={tip} >
                             <Typography variant="h6" color="inherit" noWrap>
                                 {label}
@@ -68,7 +68,11 @@ export default function Widget(props: any) {
                         <>
                             <Divider />
                             {subNames.map((subName: string, index: number) => (
-                                <List component="nav" aria-label="main mailbox folders">
+                                <List
+                                    key={subName}
+                                    component="nav"
+                                    aria-label="sub item"
+                                >
                                     <ListItem
                                         button
                                         component={RouterLink}
