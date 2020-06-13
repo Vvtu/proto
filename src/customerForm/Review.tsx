@@ -101,7 +101,7 @@ const useStyles = makeStyles({
         minWidth: 650,
     },
     header: {
-        backgroundColor: 'grey',
+        backgroundColor: '#bbb',
     },
     text: {
         backgroundColor: 'white',
