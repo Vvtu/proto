@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'row',
         justifyContent: 'start',
         alignItems: 'center',
-        marginRight: 40,
+        marginRight: 20,
+        marginLeft: 20,
         marginBottom: 40,
     },
     center: {
