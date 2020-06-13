@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const steps = ['Регистрация', 'Адреса', 'Контакты', 'Сотрудники', 'Владельцы', 'Платежные реквизиты', 'Полный список'];
+export const customerFormSteps = ['Регистрация', 'Адреса', 'Контакты', 'Сотрудники', 'Владельцы', 'Платежные реквизиты', 'Полный список'];
 
 function getStepContent(step: number) {
     switch (step) {
@@ -136,7 +136,7 @@ export default function CustomerForm(props: PROPS_TYPE) {
                         ОРП форма
           </Typography>
                     <Stepper nonLinear activeStep={activeStep} className={classes.stepper}>
-                        {steps.map((label, index) => (
+                        {customerFormSteps.map((label, index) => (
                             <Step key={label}>
                                 <StepButton onClick={handleStep(index)}
                                     completed={completed.has(index)}
@@ -147,7 +147,7 @@ export default function CustomerForm(props: PROPS_TYPE) {
                         ))}
                     </Stepper>
                     <React.Fragment>
-                        {activeStep === steps.length ? (
+                        {activeStep === customerFormSteps.length ? (
                             <React.Fragment>
                                 <Typography variant="h5" gutterBottom>
                                     Thank you for your order.
@@ -178,7 +178,7 @@ export default function CustomerForm(props: PROPS_TYPE) {
                                             onClick={handleNext}
                                             className={classes.button}
                                         >
-                                            {activeStep === steps.length - 1 ? 'Подтвердить' : 'Сохранить'}
+                                            {activeStep === customerFormSteps.length - 1 ? 'Подтвердить' : 'Сохранить'}
                                         </Button>
                                     </div>
                                 </React.Fragment>
