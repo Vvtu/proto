@@ -1,14 +1,19 @@
+
+
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Grid from '@material-ui/core/Grid';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
-const list = [
+const fullList = [
     {
-        "Регистрационная информация": [
+        name: "Регистрационная информация", list: [
             "Организационно - правовая форма",
             "Полное наименование ОРП",
             "Сокращенное наименование ОРП",
@@ -21,7 +26,7 @@ const list = [
         ]
     },
     {
-        "Адреса(Юридический, Фактический, Почтовый)": [
+        name: "Адреса(Юридический, Фактический, Почтовый)", list: [
             "Тип адреса",
             "Индекс",
             "Страна",
@@ -41,13 +46,13 @@ const list = [
     },
 
     {
-        "Контакты организации": [
+        name: "Контакты организации", list: [
             "Тип контакта"
         ]
     },
 
     {
-        "Сотрудники": [
+        name: "Сотрудники", list: [
             "ФИО сотрудника",
             "Должность  сотрудника",
             "Является руководителем ?",
@@ -80,7 +85,7 @@ const list = [
         ]
     },
     {
-        "Платежные реквизиты": [
+        name: "Платежные реквизиты", list: [
             "ОКТМО",
             "Наименование учреждения Банка России(кредитной организации)",
             "БИК",
@@ -91,67 +96,47 @@ const list = [
 
 ];
 
+const useStyles = makeStyles({
+    table: {
+        minWidth: 650,
+    },
+    header: {
+        backgroundColor: 'grey',
+    },
+    text: {
+        backgroundColor: 'white',
+    },
 
-const useStyles = makeStyles((theme) => ({
-    listItem: {
-        padding: theme.spacing(1, 0),
-    },
-    total: {
-        fontWeight: 700,
-    },
-    title: {
-        marginTop: theme.spacing(2),
-    },
-}));
+});
+
+const rows: any[] = [];
+
+fullList.forEach(({ name, list }) => {
+    rows.push({ title: name, format: 'header' });
+    list.forEach(elem => {
+        rows.push({ title: elem, format: 'text' });
+    });
+});
 
 export default function Review() {
     const classes = useStyles();
 
     return (
-        <React.Fragment >
-            <Typography variant="h6" gutterBottom>
-                Полный список
-      </Typography>
-            <List disablePadding>
-                {products.map((product) => (
-                    <ListItem className={classes.listItem} key={product.name}>
-                        <ListItemText primary={product.name} secondary={product.desc} />
-                        <Typography variant="body2">{product.price}</Typography>
-                    </ListItem>
-                ))}
-                <ListItem className={classes.listItem}>
-                    <ListItemText primary="Total" />
-                    <Typography variant="subtitle1" className={classes.total}>
-                        $34.06
-          </Typography>
-                </ListItem>
-            </List>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                    <Typography variant="h6" gutterBottom className={classes.title}>
-                        Shipping
-          </Typography>
-                    <Typography gutterBottom>John Smith</Typography>
-                    <Typography gutterBottom>{addresses.join(', ')}</Typography>
-                </Grid>
-                <Grid item container direction="column" xs={12} sm={6}>
-                    <Typography variant="h6" gutterBottom className={classes.title}>
-                        Payment details
-          </Typography>
-                    <Grid container>
-                        {payments.map((payment) => (
-                            <React.Fragment key={payment.name}>
-                                <Grid item xs={6}>
-                                    <Typography gutterBottom>{payment.name}</Typography>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <Typography gutterBottom>{payment.detail}</Typography>
-                                </Grid>
-                            </React.Fragment>
-                        ))}
-                    </Grid>
-                </Grid>
-            </Grid>
-        </React.Fragment >
+        <TableContainer component={Paper}>
+            <Table className={classes.table} size="small" aria-label="a dense table">
+                <TableBody>
+                    {rows.map(({ title, format }) => (
+                        <TableRow key={title}>
+                            <TableCell component="th" scope="row" className={format === 'header' ? classes.header : classes.text}>
+                                {title}
+                            </TableCell>
+                            {format === 'header'
+                                ? <TableCell align="right" className={classes.header}></TableCell>
+                                : <TableCell align="right" className={classes.text}>{'--------'}</TableCell>}
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
     );
 }
