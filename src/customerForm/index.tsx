@@ -137,42 +137,28 @@ export default function CustomerForm(props: PROPS_TYPE) {
                         ))}
                     </Stepper>
                     <React.Fragment>
-                        {activeStep === customerFormSteps.length ? (
-                            <React.Fragment>
-                                <Typography variant="h5" gutterBottom>
-                                    Thank you for your order.
-                </Typography>
-                                <Typography variant="subtitle1">
-                                    Your order number is #2001539. We have emailed your order confirmation, and will
-                                    send you an update when your order has shipped.
-                </Typography>
-                            </React.Fragment>
-                        ) : (
-                                <React.Fragment>
 
-                                    {getStepContent(activeStep)}
+                        {getStepContent(activeStep)}
 
-                                    <div className={classes.buttons}>
+                        <div className={classes.buttons}>
 
-                                        {activeStep !== 0 && (
-                                            <Button onClick={handleBack} className={classes.button}>
-                                                Назад
-                                            </Button>
-                                        )}
-                                        <Button onClick={() => { }} className={classes.button} disabled>
-                                            Отменить изменния
-                                            </Button>
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            onClick={handleNext}
-                                            className={classes.button}
-                                        >
-                                            {activeStep === customerFormSteps.length - 1 ? 'Подтвердить' : 'Сохранить'}
-                                        </Button>
-                                    </div>
-                                </React.Fragment>
+                            {activeStep !== 0 && (
+                                <Button onClick={handleBack} className={classes.button}>
+                                    Назад
+                                </Button>
                             )}
+                            <Button onClick={() => { }} className={classes.button} disabled>
+                                Отменить изменния
+                                            </Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={handleNext}
+                                className={classes.button}
+                            >
+                                {activeStep === customerFormSteps.length - 1 ? 'Подтвердить' : 'Сохранить'}
+                            </Button>
+                        </div>
                     </React.Fragment>
                     <Footnote />
 
