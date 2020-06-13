@@ -19,23 +19,12 @@ import Copyright from '../components/Copyright';
 import TopBar from '../components/TopBar';
 
 const useStyles = makeStyles((theme) => ({
-
-    layout: {
-        width: 'auto',
-        marginLeft: theme.spacing(2),
-        marginRight: theme.spacing(2),
-        [theme.breakpoints.up(1280 + theme.spacing(2) * 2)]: {
-            width: "100%",
-            marginLeft: 'auto',
-            marginRight: 'auto',
-        },
-    },
     paper: {
-        marginTop: theme.spacing(3),
+        marginTop: 0,
         marginBottom: theme.spacing(3),
         padding: theme.spacing(2),
         [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-            marginTop: theme.spacing(6),
+            marginTop: theme.spacing(1),
             marginBottom: theme.spacing(6),
             padding: theme.spacing(3),
         },
@@ -130,7 +119,8 @@ export default function CustomerForm(props: PROPS_TYPE) {
         <React.Fragment>
             <TopBar />
 
-            <main className={classes.layout}>
+            <main>
+
                 <Paper className={classes.paper}>
                     <Typography component="h1" variant="h4" align="center">
                         ОРП форма
