@@ -172,7 +172,7 @@ export default function AddressForm() {
                     required
                     id="country7"
                     name="country"
-                    label="Адрес"
+                    label="Адрес полной строкой"
                     fullWidth
                     autoComplete="shipping country"
                 />
