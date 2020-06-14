@@ -26,6 +26,43 @@ const useStyles = makeStyles((theme) => ({
 
 const TIP_MESSAGE = "Извините, этот модуль еще не разработан.";
 
+const OIV_SUBNAMES = [
+    "Регистрационная информация",
+    "Адрес(Юридический)",
+    "Контакты организации",
+    "Сотрудники",
+    "Платежные реквизиты",
+    "Полный список",
+]
+
+const PROJECT_SUBNAMES = [
+    "Общая информация",
+    "Этапы проект",
+    "Объекты инфраструктуры",
+    "Стабилизационные оговорки",
+    "Связанные документы (ссылки)",
+    "Полный список",
+];
+
+const BUSINESS_PLAN_SUBNAMES = [
+    "Общая информация",
+    "Показатели эффективности",
+    "Меры поддержки",
+    "Финансовые показатели",
+    "Мультипликативные эффекты",
+    "Рабочие места",
+    "Выручка и объем реализации",
+    "Полный список"
+]
+
+const DOCUMENT_SUBNAMES = [
+    "Общая информация",
+    "Бизнес-процесс",
+    "Подписи",
+    "Связанные документы (ссылки)",
+    "Полный список"
+]
+
 export default function Main() {
     const classes = useStyles();
 
@@ -41,10 +78,14 @@ export default function Main() {
                     label={`ОРП`} tip={"ОРП это такая большая форма с многими полями"}
                     subNames={customerFormSteps} >
                 </Widget>
-                <Widget setErrorFired={setErrorFired} label={`ОИВ`} tip={TIP_MESSAGE} />
-                <Widget setErrorFired={setErrorFired} label={`Проект`} tip={TIP_MESSAGE} />
-                <Widget setErrorFired={setErrorFired} label={`Бизнес-план`} tip={TIP_MESSAGE} />
-                <Widget setErrorFired={setErrorFired} label={`Документ`} tip={TIP_MESSAGE} />
+                <Widget
+                    setErrorFired={setErrorFired}
+                    label={`ОИВ`} tip={TIP_MESSAGE}
+                    subNames={OIV_SUBNAMES}
+                />
+                <Widget setErrorFired={setErrorFired} label={`Проект`} tip={TIP_MESSAGE} subNames={PROJECT_SUBNAMES} />
+                <Widget setErrorFired={setErrorFired} label={`Бизнес-план`} tip={TIP_MESSAGE} subNames={BUSINESS_PLAN_SUBNAMES} />
+                <Widget setErrorFired={setErrorFired} label={`Документ`} tip={TIP_MESSAGE} subNames={DOCUMENT_SUBNAMES} />
             </Container>
             <Copyright />
             {errorFired && <TransitionsModal

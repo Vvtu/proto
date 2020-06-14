@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     paper: {
-        height: 300,
-        width: 300,
+        height: 350,
+        width: 350,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'start',
@@ -37,8 +37,9 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        padding: "30px 0 30px 30px"
     }
     ,
     itemHeight: {
@@ -82,7 +83,7 @@ export default function Widget(props: any) {
                                         <ListItemText
                                             primary={
                                                 <Typography variant="subtitle1" color="primary" noWrap>
-                                                    {subName}
+                                                    {`${index + 1}. ${subName}`}
                                                 </Typography>}
                                             className={classes.link} />
                                     </ListItem>
