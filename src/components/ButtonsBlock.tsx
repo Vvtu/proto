@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(1),
     },
     footnote: {
-        marginTop: "-25px"
-    }
+        marginTop: '-25px',
+    },
 }));
 
 type PROPS_TYPE = {
@@ -26,14 +26,9 @@ type PROPS_TYPE = {
 };
 export default function ButtonsBlock(props: PROPS_TYPE) {
     const classes = useStyles();
-    const {
-        activeStep,
-        handleBack,
-        handleNext,
-        isLAst,
-    } = props;
+    const { activeStep, handleBack, handleNext, isLAst } = props;
 
-    console.log('activeStep  = ', activeStep)
+    console.log('activeStep  = ', activeStep);
 
     return (
         <React.Fragment>
@@ -43,14 +38,15 @@ export default function ButtonsBlock(props: PROPS_TYPE) {
                         Назад
                     </Button>
                 )}
-                <Button onClick={() => { }} className={classes.button} disabled>
+                <Button onClick={() => {}} className={classes.button} disabled>
                     Отменить изменния
-                                            </Button>
+                </Button>
+                <div onClick={handleNext}></div>
                 <Button
                     variant="contained"
                     color="primary"
-                    onClick={handleNext}
                     className={classes.button}
+                    type="submit"
                 >
                     {isLAst ? 'Подтвердить' : 'Сохранить'}
                 </Button>
