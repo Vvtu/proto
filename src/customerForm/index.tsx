@@ -92,7 +92,7 @@ export default function CustomerForm(props: PROPS_TYPE) {
 
                 <Paper className={classes.paper}>
                     <Typography component="h1" variant="h4" align="center">
-                        ОРП форма
+                        ОРП (Отдел по работе с клиентами)
           </Typography>
                     <Stepper nonLinear activeStep={activeStep} className={classes.stepper}>
                         {customerFormSteps.map((label, index) => (
