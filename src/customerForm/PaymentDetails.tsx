@@ -32,43 +32,31 @@ const initialPamentDetailes = {
     shortName: '',
 };
 
-const ОБЯЗАТЕЛЬНОЕ_ПОЛЕ = 'Обязательное поле';
-const ДОЛЖНО_БЫТЬ_ЧИСЛОМ = 'Должно быть числом';
-const ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ = 'Должно быть целым числом';
-const ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ = 'Должно быть положительным';
+const REQUIRED_FIELD = 'обязательное поле';
+
+Yup.addMethod(Yup.string, 'digital', function (anyArgsYouNeed) {
+    // @ts-ignore
+    return this.matches(/^\d+$/, 'должно содержать только цифры');
+});
 
 export const pamentDetailesValidationSchema = Yup.object().shape({
-    shortName: Yup.string().required(ОБЯЗАТЕЛЬНОЕ_ПОЛЕ),
-    comment: Yup.string().required(ОБЯЗАТЕЛЬНОЕ_ПОЛЕ),
-    bankName: Yup.string().required(ОБЯЗАТЕЛЬНОЕ_ПОЛЕ),
-    inn: Yup.number()
-        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
-        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
-        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    kpp: Yup.number()
-        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
-        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
-        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    ogrn: Yup.number()
-        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
-        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
-        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    bik: Yup.number()
-        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
-        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
-        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    account: Yup.number()
-        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
-        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
-        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    correspAcc: Yup.number()
-        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
-        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
-        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    okpo: Yup.number()
-        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
-        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
-        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
+    shortName: Yup.string().required(REQUIRED_FIELD),
+    comment: Yup.string().required(REQUIRED_FIELD),
+    bankName: Yup.string().required(REQUIRED_FIELD),
+    // @ts-ignore
+    inn: Yup.string().digital().required(REQUIRED_FIELD),
+    // @ts-ignore
+    kpp: Yup.string().digital().required(REQUIRED_FIELD),
+    // @ts-ignore
+    ogrn: Yup.string().digital().required(REQUIRED_FIELD),
+    // @ts-ignore
+    bik: Yup.string().digital().required(REQUIRED_FIELD),
+    // @ts-ignore
+    account: Yup.string().digital().required(REQUIRED_FIELD),
+    // @ts-ignore
+    correspAcc: Yup.string().digital().required(REQUIRED_FIELD),
+    // @ts-ignore
+    okpo: Yup.string().digital().required(REQUIRED_FIELD),
 });
 
 type FormikInputType = {
@@ -114,7 +102,7 @@ export default function PaymentDetails(props: any) {
                 setServerData({ ...initialPamentDetailes, ...data[0] });
             })
             .catch((error) => {
-                throw new Error(error);
+                console.error(error);
             });
     }, []);
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -6,7 +6,6 @@ import { getRequest } from '../utils';
 import ButtonsBlock from '../components/ButtonsBlock';
 
 export default function CompanyRegisterInfo(props: any) {
-    const [organizationData, setOrganizationData] = useState({});
     useEffect(() => {
         getRequest('/v0/organizations').then((data) => {
             console.log('data = ', data);

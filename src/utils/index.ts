@@ -1,7 +1,5 @@
 //http://localhost:8081/swagger-ui.html#
 
-import { AnyAaaaRecord } from 'dns';
-
 const baseUrl = 'http://localhost:8081';
 
 export const getRequest = (url: string) => {
