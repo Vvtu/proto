@@ -15,7 +15,7 @@ const initialPamentDetailes = {
     account: '',
     bankName: '',
     bik: '',
-    comment: 'dsfsdfsdfsf',
+    comment: '',
     contactType: '',
     contactValue: '',
     correspAcc: '',
@@ -53,21 +53,6 @@ type FormikInputType = {
     field: any;
     form: any;
 };
-
-// const CustomTextInput = ({
-//     field, // { name, value, onChange, onBlur }
-//     form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-//     ...props
-// }: CustomTextInputType) => (
-//     <div>
-//         <TextField
-//             error={touched?.field?.name && errors?.field?.name && true}
-//             helperText={touched?.field?.name && errors?.field?.name}
-//             {...field}
-//             {...props}
-//         />
-//     </div>
-// );
 
 const handleChange = (event: any, formik: any) => {
     // get name and value from event.target
@@ -123,7 +108,6 @@ export default function PaymentDetails(props: any) {
         formik.handleSubmit();
         if (formik.isValid) {
             props.handleNext();
-        } else {
         }
         console.log('newHandleNext');
     };
