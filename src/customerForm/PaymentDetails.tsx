@@ -33,6 +33,7 @@ const initialPamentDetailes = {
 };
 
 const ОБЯЗАТЕЛЬНОЕ_ПОЛЕ = 'Обязательное поле';
+const ДОЛЖНО_БЫТЬ_ЧИСЛОМ = 'Должно быть числом';
 const ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ = 'Должно быть целым числом';
 const ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ = 'Должно быть положительным';
 
@@ -40,13 +41,34 @@ export const pamentDetailesValidationSchema = Yup.object().shape({
     shortName: Yup.string().required(ОБЯЗАТЕЛЬНОЕ_ПОЛЕ),
     comment: Yup.string().required(ОБЯЗАТЕЛЬНОЕ_ПОЛЕ),
     bankName: Yup.string().required(ОБЯЗАТЕЛЬНОЕ_ПОЛЕ),
-    inn: Yup.number().integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ).positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    kpp: Yup.number().integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ).positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    ogrn: Yup.number().integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ).positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    bik: Yup.number().integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ).positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    account: Yup.number().integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ).positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    correspAcc: Yup.number().integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ).positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    okpo: Yup.number().integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ).positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
+    inn: Yup.number()
+        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
+        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
+        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
+    kpp: Yup.number()
+        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
+        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
+        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
+    ogrn: Yup.number()
+        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
+        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
+        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
+    bik: Yup.number()
+        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
+        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
+        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
+    account: Yup.number()
+        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
+        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
+        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
+    correspAcc: Yup.number()
+        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
+        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
+        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
+    okpo: Yup.number()
+        .typeError(ДОЛЖНО_БЫТЬ_ЧИСЛОМ)
+        .integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ)
+        .positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
 });
 
 type FormikInputType = {
@@ -68,6 +90,7 @@ const FormikInput = ({ formik, name, label }: { formik: any; name: string; label
     const value = formik.values[name];
     return (
         <TextField
+            required
             error={error}
             helperText={error}
             id={name}
