@@ -10,26 +10,7 @@ import Copyright from '../components/Copyright';
 import { customerFormSteps } from '../customerForm';
 
 import TransitionsModal from '../components/TransitionsModal';
-// {
-//     "id": 11111,
-//     "orgForm": null,
-//     "fullName": null,
-//     "shortName": null,
-//     "inn": null,
-//     "kpp": null,
-//     "ogrn": null,
-//     "okpo": null,
-//     "okved": null,
-//     "shareCapital": null,
-//     "contactType": null,
-//     "contactValue": null,
-//     "oktmo": null,
-//     "bankName": null,
-//     "bik": null,
-//     "correspAcc": null,
-//     "account": null,
-//     "description": null,
-//     "comment": "dsfsdfsdfsf"
+
 const useStyles = makeStyles((theme) => ({
     container: {
         paddingTop: 40,
