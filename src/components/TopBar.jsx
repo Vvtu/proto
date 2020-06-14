@@ -39,7 +39,7 @@ export default function CustomerForm() {
           <RouterLink to={"/"} className={classes.link}>
             <Tooltip title={"Переход на главную страницу"}>
               <Typography variant="h6" noWrap className={classes.whiteColor}>
-                ГИС прототип
+                ГИС Капиталовложения
               </Typography>
             </Tooltip>
           </RouterLink>

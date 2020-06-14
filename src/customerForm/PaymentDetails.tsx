@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import ButtonsBlock from '../components/ButtonsBlock'
 
+import { getReuest } from '../utils'
+
 export default function PaymentDetails(props: any) {
+    useEffect(() => {
+        getReuest("/v0/organizations").then((data) => {
+            console.log('data = ', data);
+        })
+    }, []);
+
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
@@ -12,6 +20,16 @@ export default function PaymentDetails(props: any) {
       </Typography>
 
             <Grid container spacing={3}>
+
+                <Grid item xs={12} md={12}>
+                    <TextField
+                        required
+                        id="cardNumber2"
+                        label="Наименование организации"
+                        fullWidth
+                        autoComplete="cc-number"
+                    />
+                </Grid>
 
                 <Grid item xs={12} md={12}>
                     <Grid item xs={12} md={4}>
@@ -24,6 +42,7 @@ export default function PaymentDetails(props: any) {
                         />
                     </Grid>
                 </Grid>
+
                 <Grid item xs={12} md={12}>
                     <TextField
                         required

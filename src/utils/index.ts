@@ -2,9 +2,8 @@
 
 const baseUrl = "http://localhost:8081";
 
-export const fetchData = () => {
-  const relUrl = "/v0/organizations";
-  return fetch(`${baseUrl}${relUrl}`).then((response) => {
+export const getReuest = (url: string) => {
+  return fetch(`${baseUrl}${url}`).then((response) => {
     return response.json();
   });
 };
