@@ -2,26 +2,24 @@ import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import { getReuest } from '../utils'
-import ButtonsBlock from '../components/ButtonsBlock'
-
+import { getRequest } from '../utils';
+import ButtonsBlock from '../components/ButtonsBlock';
 
 export default function CompanyRegisterInfo(props: any) {
-
     const [organizationData, setOrganizationData] = useState({});
     useEffect(() => {
-        getReuest('/v0/organizations').then((data) => {
+        getRequest('/v0/organizations').then((data) => {
             console.log('data = ', data);
-        })
+        });
     }, []);
 
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
                 Регистрационная информация
-      </Typography>
+            </Typography>
             <Grid container spacing={3}>
-                <Grid item sm={12} >
+                <Grid item sm={12}>
                     <TextField
                         required
                         id="legalForm"
@@ -31,7 +29,7 @@ export default function CompanyRegisterInfo(props: any) {
                         autoComplete="given-name"
                     />
                 </Grid>
-                <Grid item sm={12} >
+                <Grid item sm={12}>
                     <TextField
                         required
                         id="lastName"

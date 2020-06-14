@@ -41,12 +41,12 @@ export default function ButtonsBlock(props: PROPS_TYPE) {
                 <Button onClick={() => {}} className={classes.button} disabled>
                     Отменить изменния
                 </Button>
-                <div onClick={handleNext}></div>
                 <Button
                     variant="contained"
                     color="primary"
                     className={classes.button}
-                    type="submit"
+                    type="button"
+                    onClick={handleNext}
                 >
                     {isLAst ? 'Подтвердить' : 'Сохранить'}
                 </Button>

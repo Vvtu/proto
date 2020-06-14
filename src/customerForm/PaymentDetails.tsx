@@ -2,34 +2,35 @@ import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
 import ButtonsBlock from '../components/ButtonsBlock';
 import { useFormik } from 'formik';
 
+import { putRequest } from '../utils';
+
 import * as Yup from 'yup';
 
-import { getReuest } from '../utils';
+import { getRequest } from '../utils';
 
-// const initialPamentDetailes = {
-//     account: '',
-//     bankName: '',
-//     bik: '',
-//     comment: 'dsfsdfsdfsf',
-//     contactType: '',
-//     contactValue: '',
-//     correspAcc: '',
-//     description: '',
-//     fullName: '',
-//     inn: '',
-//     kpp: '',
-//     ogrn: '',
-//     okpo: '',
-//     oktmo: '',
-//     okved: '',
-//     orgForm: '',
-//     shareCapital: '',
-//     shortName: '',
-// };
+const initialPamentDetailes = {
+    account: '',
+    bankName: '',
+    bik: '',
+    comment: 'dsfsdfsdfsf',
+    contactType: '',
+    contactValue: '',
+    correspAcc: '',
+    description: '',
+    fullName: '',
+    inn: '',
+    kpp: '',
+    ogrn: '',
+    okpo: '',
+    oktmo: '',
+    okved: '',
+    orgForm: '',
+    shareCapital: '',
+    shortName: '',
+};
 
 const ОБЯЗАТЕЛЬНОЕ_ПОЛЕ = 'Обязательное поле';
 const ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ = 'Должно быть целым числом';
@@ -46,7 +47,6 @@ export const pamentDetailesValidationSchema = Yup.object().shape({
     account: Yup.number().integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ).positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
     correspAcc: Yup.number().integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ).positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
     okpo: Yup.number().integer(ДОЛЖНО_БЫТЬ_ЦЕЛЫМ_ЧИСЛОМ).positive(ДОЛЖНО_БЫТЬ_ПОЛОЖИТЕЛЬНЫМ),
-    okved: Yup.string().required(ОБЯЗАТЕЛЬНОЕ_ПОЛЕ),
 });
 
 type FormikInputType = {
@@ -69,33 +69,41 @@ type FormikInputType = {
 //     </div>
 // );
 
+const handleChange = (event: any, formik: any) => {
+    // get name and value from event.target
+    // is the same as const name = event.target.name
+    const { name, value } = event.target;
+    // make sure you have name prop in
+    // your textfield and it is same name as your initial state
+    formik.setFieldValue(name, value); // this call formik to set your value
+};
+
 const FormikInput = ({ formik, name, label }: { formik: any; name: string; label: string }) => {
     const error = formik.touched[name] && formik.errors[name];
     const value = formik.values[name];
     return (
-        <FormControl>
-            <TextField
-                error={error}
-                helperText={error}
-                id={name}
-                label={label}
-                fullWidth
-                onChange={formik.handleChange}
-                value={value}
-                onBlur={formik.handleBlur}
-                inputProps={{ dirty: value }}
-            />
-        </FormControl>
+        <TextField
+            error={error}
+            helperText={error}
+            id={name}
+            name={name}
+            label={label}
+            fullWidth
+            onChange={(event) => handleChange(event, formik)}
+            value={value}
+            onBlur={formik.handleBlur}
+            InputLabelProps={{ shrink: !!value || formik.touched[name] }}
+        />
     );
 };
 
 export default function PaymentDetails(props: any) {
     const [serverData, setServerData] = useState({});
     useEffect(() => {
-        getReuest('/v0/organizations')
+        getRequest('/v0/organizations')
             .then((data) => {
-                console.log('data = ', data);
-                setServerData(data[0]);
+                console.log('data 4444 = ', data);
+                setServerData({ ...initialPamentDetailes, ...data[0] });
             })
             .catch((error) => {
                 throw new Error(error);
@@ -103,19 +111,22 @@ export default function PaymentDetails(props: any) {
     }, []);
 
     const formik = useFormik({
-        // enableReinitialize: true,
+        enableReinitialize: true,
         initialValues: serverData,
         onSubmit: (values) => {
             console.log('onSubmit values = ', values);
-            alert(JSON.stringify(values, null, 2));
+            putRequest('/v0/organizations', { ...initialPamentDetailes, ...values });
         },
-        // onSubmit: (values, { resetForm }) => {
-        //     // onSubmit(values);
-        //     // resetForm();
-        // },
         validationSchema: pamentDetailesValidationSchema,
     });
-
+    const newHandleNext = () => {
+        formik.handleSubmit();
+        if (formik.isValid) {
+            props.handleNext();
+        } else {
+        }
+        console.log('newHandleNext');
+    };
     console.log('serverData = ', serverData);
     console.log('formik.values = ', formik.values);
     console.log('formik = ', formik);
@@ -139,73 +150,36 @@ export default function PaymentDetails(props: any) {
                     />
                 </Grid>
 
-                <Grid item xs={12} md={12}>
-                    <Grid item xs={12} md={4}>
-                        <FormikInput formik={formik} name="inn" label="ИНН" />
-                    </Grid>
+                <Grid item xs={12} md={4}>
+                    <FormikInput formik={formik} name="inn" label="ИНН" />
                 </Grid>
-
-                <button type="submit">submit</button>
-
-                {/* <Grid item xs={12} md={12}>
-                    <Grid item xs={12} md={4}>
-                        <TextField
-                            required
-                            id="cardNumber"
-                            label="ОКТМО"
-                            fullWidth
-                            autoComplete="cc-number"
-                        />
-                    </Grid>
+                <Grid item xs={12} md={4}>
+                    <FormikInput formik={formik} name="kpp" label="КПП" />
                 </Grid>
-
+                <Grid item xs={12} md={4}>
+                    <FormikInput formik={formik} name="okpo" label="ОКПО" />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <FormikInput formik={formik} name="bik" label="БИК" />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <FormikInput formik={formik} name="ogrn" label="ОГРН" />
+                </Grid>
                 <Grid item xs={12} md={12}>
-                    <TextField
-                        required
-                        id="cardNumber2"
-                        label="Наименование учреждения Банка России (кредитной организации)"
-                        fullWidth
-                        autoComplete="cc-number"
-                    />
+                    <FormikInput formik={formik} name="account" label="Расчетный счет" />
+                </Grid>
+                <Grid item xs={12} md={12}>
+                    <FormikInput formik={formik} name="correspAcc" label="Корреспонденский счет" />
                 </Grid>
 
                 <Grid item xs={12} md={12}>
-                    <Grid item xs={12} md={4}>
-                        {' '}
-                        <TextField
-                            required
-                            id="cardNumber4"
-                            label="БИК"
-                            fullWidth
-                            autoComplete="cc-number"
-                        />
-                    </Grid>
+                    <FormikInput formik={formik} name="bankName" label="Наименование банка" />
                 </Grid>
                 <Grid item xs={12} md={12}>
-                    <Grid item xs={12} md={4}>
-                        <TextField
-                            required
-                            id="cardNumber5"
-                            label="Корреспондентский счет"
-                            fullWidth
-                            autoComplete="cc-number"
-                        />
-                    </Grid>
+                    <FormikInput formik={formik} name="comment" label="Комментарий" />
                 </Grid>
-                <Grid item xs={12} md={12}>
-                    <Grid item xs={12} md={4}>
-                        {' '}
-                        <TextField
-                            required
-                            id="cardNumber6"
-                            label="Расчетный счет"
-                            fullWidth
-                            autoComplete="cc-number"
-                        />
-                    </Grid>
-                </Grid> */}
             </Grid>
-            <ButtonsBlock {...props} />
+            <ButtonsBlock {...props} handleNext={newHandleNext} />
         </form>
     );
 }
