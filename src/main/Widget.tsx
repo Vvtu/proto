@@ -58,6 +58,10 @@ const useStyles = makeStyles((theme) => ({
     itemHeight: {
         height: 16,
     },
+
+    marginBottom: {
+        marginBottom: 12,
+    },
 }));
 
 export default function Widget(props: any) {
@@ -85,7 +89,7 @@ export default function Widget(props: any) {
 
                     {subNames.length > 0 && (
                         <>
-                            <Divider />
+                            <Divider className={classes.marginBottom} />
                             {subNames.map((subName: string, index: number) => (
                                 <List key={subName} component="nav" aria-label="sub item">
                                     <ListItem
