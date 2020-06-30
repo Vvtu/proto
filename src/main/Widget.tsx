@@ -32,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 20,
     marginBottom: 40,
     '&:hover': {
-      top: -3,
-      left: -3,
-      boxShadow: '3px 3px 6px 2px rgba(0,0,0,0.50)',
+      top: -1,
+      left: -1,
+      boxShadow: '1px 1px 2px 2px rgba(0,0,0,0.50)',
       '&::before': {
         content: '""',
         position: 'absolute',
