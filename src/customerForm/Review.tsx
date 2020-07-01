@@ -120,7 +120,7 @@ fullList.forEach(({ name, list }) => {
 
 export default function Review(props: BUTTONS_BLOCK_PROPS_INTERFACE) {
   const classes = useStyles();
-  const [serverData, setServerData] = useState<{ [key: string]: any }>({});
+  const [serverData, setServerData] = useState<{ [key: string]: string }>({});
 
   const getFieldValue = (name: string): string => {
     switch (name) {

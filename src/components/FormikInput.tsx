@@ -1,7 +1,11 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import { FormikValues } from 'formik';
 
-const handleChange = (event: any, formik: any) => {
+const handleChange = (
+  event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  formik: FormikValues,
+) => {
   // get name and value from event.target
   // is the same as const name = event.target.name
   const { name, value } = event.target;
@@ -10,7 +14,15 @@ const handleChange = (event: any, formik: any) => {
   formik.setFieldValue(name, value); // this call formik to set your value
 };
 
-const FormikInput = ({ formik, name, label }: { formik: any; name: string; label: string }) => {
+const FormikInput = ({
+  formik,
+  name,
+  label,
+}: {
+  formik: FormikValues;
+  name: string;
+  label: string;
+}) => {
   const error = formik.touched[name] && formik.errors[name];
   const value = formik.values[name];
   return (
