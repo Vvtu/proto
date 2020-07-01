@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { generatePath } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -74,23 +74,27 @@ export default function CustomerForm(props: PROPS_TYPE) {
   } = props;
   const activeStep = parseInt(params.step || '0', 10);
 
-  const setActiveStep = (step: number) => {
-    const path = generatePath(CUSTOMER_FORM, {
-      ...params,
-      step,
-    });
-    history.push(path);
-  };
-  console.log('activeStep  = ', activeStep);
+  const setActiveStep = useCallback(
+    (step: number) => {
+      const path = generatePath(CUSTOMER_FORM, {
+        ...params,
+        step,
+      });
+      history.push(path);
+    },
+    [history, params],
+  );
+
+  console.log('CustomerForm activeStep = ', activeStep);
 
   const [completed, setCompleted] = React.useState(new Set<number>());
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     const newCompleted = new Set([...completed]);
     newCompleted.add(activeStep);
     setCompleted(newCompleted);
     setActiveStep(activeStep + 1);
-  };
+  }, [activeStep, completed, setActiveStep]);
 
   const handleBack = (): void => {
     setActiveStep(activeStep - 1);

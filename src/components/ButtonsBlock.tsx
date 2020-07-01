@@ -29,8 +29,6 @@ export default function ButtonsBlock(props: BUTTONS_BLOCK_PROPS_INTERFACE) {
   const classes = useStyles();
   const { activeStep, handleBack, handleNext, isLast } = props;
 
-  console.log('activeStep  = ', activeStep);
-
   return (
     <React.Fragment>
       <div className={classes.buttons}>
