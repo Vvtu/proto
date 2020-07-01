@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import ButtonsBlock, { BUTTONS_BLOCK_PROPS_INTERFACE } from '../components/ButtonsBlock';
 import { useFormik } from 'formik';
 
 import { putRequest } from '../utils';
+import FormikInput from '../components/FormikInput';
 
 import * as Yup from 'yup';
 
@@ -58,35 +58,6 @@ export const pamentDetailesValidationSchema = Yup.object().shape({
   // @ts-ignore
   okpo: Yup.string().digital().required(REQUIRED_FIELD),
 });
-
-const handleChange = (event: any, formik: any) => {
-  // get name and value from event.target
-  // is the same as const name = event.target.name
-  const { name, value } = event.target;
-  // make sure you have name prop in
-  // your textfield and it is same name as your initial state
-  formik.setFieldValue(name, value); // this call formik to set your value
-};
-
-const FormikInput = ({ formik, name, label }: { formik: any; name: string; label: string }) => {
-  const error = formik.touched[name] && formik.errors[name];
-  const value = formik.values[name];
-  return (
-    <TextField
-      required
-      error={error}
-      helperText={error}
-      id={name}
-      name={name}
-      label={label}
-      fullWidth
-      onChange={(event) => handleChange(event, formik)}
-      value={value}
-      onBlur={formik.handleBlur}
-      InputLabelProps={{ shrink: !!value || formik.touched[name] }}
-    />
-  );
-};
 
 export default function PaymentDetails(props: BUTTONS_BLOCK_PROPS_INTERFACE) {
   const [serverData, setServerData] = useState({});
