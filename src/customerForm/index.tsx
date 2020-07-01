@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import CompanyRegisterInfo from './CompanyRegisterInfo';
 import AddressForm from './AddressForm';
 import Contacts from './Contacts';
+import EmployeesForm from './EmployeesForm';
 import Employees from './employees';
 import PaymentDetails from './PaymentDetails';
 import Review from './Review';
@@ -50,7 +51,7 @@ const FormsArray = [
   CompanyRegisterInfo,
   AddressForm,
   Contacts,
-  Emps,
+  EmployeesForm,
   Holders,
   PaymentDetails,
   Review,
