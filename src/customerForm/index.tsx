@@ -34,28 +34,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const customerFormSteps = [
-  'Регистрация',
-  'Адреса',
-  'Контакты',
-  'Сотрудники',
-  'Владельцы',
-  'Платежные реквизиты',
-  'Полный список',
-];
-
-const Emps = () => <Employees name={'Сотрудники'} />;
 const Holders = () => <Employees name={'Владельцы'} />;
 
 const FormsArray = [
-  CompanyRegisterInfo,
-  AddressForm,
-  Contacts,
-  EmployeesForm,
-  Holders,
-  PaymentDetails,
-  Review,
+  { title: 'Регистрация', component: CompanyRegisterInfo },
+  { title: 'Адреса', component: AddressForm },
+  { title: 'Контакты', component: Contacts },
+  { title: 'Сотрудники', component: EmployeesForm },
+  { title: 'Владельцы', component: Holders },
+  { title: 'Платежные реквизиты', component: PaymentDetails },
+  { title: 'Полный список', component: Review },
 ];
+
+export const customerFormSteps = FormsArray.map((item) => item.title);
 
 export const CUSTOMER_FORM = '/customer-form/:step?';
 
@@ -105,7 +96,7 @@ export default function CustomerForm(props: PROPS_TYPE) {
     setActiveStep(step);
   };
 
-  const Content = FormsArray[activeStep];
+  const Content = FormsArray[activeStep].component;
   if (!Content) {
     throw new Error(`Component not implemented for step =${activeStep}`);
   }
@@ -119,10 +110,10 @@ export default function CustomerForm(props: PROPS_TYPE) {
             ОРП (Отдел по работе с клиентами)
           </Typography>
           <Stepper nonLinear activeStep={activeStep} className={classes.stepper}>
-            {customerFormSteps.map((label, index) => (
-              <Step key={label}>
+            {FormsArray.map(({ title }, index) => (
+              <Step key={title}>
                 <StepButton onClick={handleStep(index)} completed={completed.has(index)}>
-                  {label}
+                  {title}
                 </StepButton>
               </Step>
             ))}
