@@ -55,8 +55,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-start',
     padding: '30px 0 30px 30px',
   },
+
   itemHeight: {
     height: 16,
+    '&:hover': {
+      backgroundColor: 'white',
+    },
   },
 
   marginBottom: {
@@ -64,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export type WIDGET_PROPS = {
+type WIDGET_PROPS = {
   children?: never[];
   setErrorFired: Dispatch<SetStateAction<string>>;
   link?: string;
