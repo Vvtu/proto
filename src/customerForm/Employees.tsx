@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function EmployeesForm() {
+export default function Employees() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState<string | false>(false);
 

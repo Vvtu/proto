@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import CompanyRegisterInfo from './CompanyRegisterInfo';
 import AddressForm from './AddressForm';
 import Contacts from './Contacts';
-import EmployeesForm from './EmployeesForm';
+import Employees from './Employees';
 import PaymentDetails from './PaymentDetails';
 import Review from './Review';
 import Copyright from '../components/Copyright';
@@ -40,7 +40,7 @@ const FormsArray = [
   { title: 'Регистрация', component: CompanyRegisterInfo },
   { title: 'Адреса', component: AddressForm },
   { title: 'Контакты', component: Contacts },
-  { title: 'Сотрудники', component: EmployeesForm },
+  { title: 'Сотрудники', component: Employees },
   { title: 'Владельцы', component: Holders },
   { title: 'Платежные реквизиты', component: PaymentDetails },
   { title: 'Полный список', component: Review },
