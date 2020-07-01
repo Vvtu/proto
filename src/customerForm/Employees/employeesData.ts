@@ -33,7 +33,7 @@ export const data: EPML_DATA_INTERFACE[] = [
   },
   {
     id: 'id2',
-    fio: 'Манина Ольга Вячеславна',
+    fio: 'Манина Ольга Сергеевна',
     position: 'Главный бухгалтер',
     isChief: false,
     document: 'приказ №5 от 15.01.2018г.',

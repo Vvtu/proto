@@ -6,6 +6,8 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { EPML_DATA_INTERFACE } from './employeesData';
@@ -13,7 +15,7 @@ import { EPML_DATA_INTERFACE } from './employeesData';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      backgroundColor: '#ddd',
+      backgroundColor: '#eee',
     },
     heading: {
       fontSize: theme.typography.pxToRem(15),
@@ -78,12 +80,16 @@ export default function EmployeePanel(props: PropsType) {
             />
           </Grid>
           <Grid item sm={12} md={4}>
-            <TextField
+            <FormControlLabel
               id="isChief"
-              name="isChief"
+              control={
+                <Checkbox
+                  color="secondary"
+                  name="isChief"
+                  value={emplData.isChief ? 'Yes' : 'No'}
+                />
+              }
               label="Является руководителем?"
-              fullWidth
-              value={emplData.isChief}
             />
           </Grid>
           <Grid item sm={12}>
