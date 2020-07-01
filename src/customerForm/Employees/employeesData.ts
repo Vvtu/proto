@@ -7,8 +7,21 @@
 // Логин в ГИС Капиталовложения
 // Логин в ЕСИА
 
-export const data = [
+export interface EPML_DATA_INTERFACE {
+  id: string;
+  fio: string;
+  position: string;
+  isChief: boolean;
+  document: string;
+  contractType: string;
+  contractValue: string;
+  loginGis: string;
+  loginEsia: string;
+}
+
+export const data: EPML_DATA_INTERFACE[] = [
   {
+    id: 'id1',
     fio: 'Иванов Сергей Петрович',
     position: 'Генеральный директор',
     isChief: true,
@@ -16,9 +29,10 @@ export const data = [
     contractType: 'долгосрочный',
     contractValue: 'постоянный',
     loginGis: 'IvanovSP',
-    LoginEsia: 'IvanovSP',
+    loginEsia: 'IvanovSP',
   },
   {
+    id: 'id2',
     fio: 'Манина Ольга Вячеславна',
     position: 'Главный бухгалтер',
     isChief: false,
@@ -26,9 +40,10 @@ export const data = [
     contractType: 'долгосрочный',
     contractValue: 'постоянный',
     loginGis: 'ManinaOV',
-    LoginEsia: 'ManinaOV',
+    loginEsia: 'ManinaOV',
   },
   {
+    id: 'id3',
     fio: 'Сергеев Иван Петрович',
     position: 'Заместитель директора',
     isChief: false,
@@ -36,6 +51,6 @@ export const data = [
     contractType: 'долгосрочный',
     contractValue: 'постоянный',
     loginGis: 'SergIP',
-    LoginEsia: 'SergIP',
+    loginEsia: 'SergIP',
   },
 ];
